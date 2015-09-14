@@ -1,0 +1,10 @@
+[
+  {
+    "eventType": "PasswordReset",
+    "ratePerSecond": 5
+  },
+  {
+    "eventType": "AccountTakeover",
+    "ratePerSecond": 1
+  }
+]

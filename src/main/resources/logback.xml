@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- logback doesn't provide schema or DTD for configuration files, because of fluent syntax that can be used here -->
+<!DOCTYPE configuration>
+<configuration scan="true">
+
+    <property name="common.log.date.format" value="{yy/MM/dd HH:mm:ss:SSS}" />
+    <property name="log.pattern" value="[%d${common.log.date.format}] [%t] [%c{0}] [%p]: %m%n" />
+    <property name="stats.log.pattern" value="[%d${common.log.date.format}] [%X{applicationName}]: %m%n" />
+
+    <property name="common.log.file.date.pattern" value="yyyy-MM-dd" />
+    <property name="root.log.filename" value="events.log" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/${root.log.filename}</file>
+
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+    </appender>
+    
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="LOGFILE" />
+    </root>
+
+</configuration>
