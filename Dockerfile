@@ -1,4 +1,4 @@
-FROM docker.dev.confyrm.com/java8:2
+FROM cloudesire/java:8
 
 ADD target/appassembler /opt/confyrm/demo/
 
