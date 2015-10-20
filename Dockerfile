@@ -1,6 +1,16 @@
 FROM cloudesire/java:8
 
-ADD target/appassembler /opt/confyrm/demo/
+RUN  \
+  export DEBIAN_FRONTEND=noninteractive && \
+  apt-get update && \
+  apt-get install -y maven
+
+ADD . /opt/confyrm/build
+
+WORKDIR /opt/confyrm/build
+
+RUN mvn clean package
+RUN mv target/appassembler /opt/confyrm/demo
 
 WORKDIR  /opt/confyrm/demo
 

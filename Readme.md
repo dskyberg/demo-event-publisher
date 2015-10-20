@@ -2,7 +2,6 @@
 
 ## Build
 
-* Build application: `mvn clean package`
 * Build docker image: `sudo scripts/build_docker_image.sh`
 
 ## Configure
